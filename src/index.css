@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-deep: #0a0e1a;
+  --color-panel: #10152a;
+  --color-card: #151b33;
+  --color-pcb: #00b85c;
+  --color-pcb-dark: #007a3e;
+  --color-gold: #f5c518;
+  --color-cyber: #00e5ff;
+  --color-ink: #e7eaf3;
+  --color-muted: #97a0b8;
+  --color-edge: #232c4a;
+  --font-display: 'Orbitron', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ===== normal scrolling page ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0e1a;
+  color: #e7eaf3;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+canvas {
+  display: block;
+  /* mobile: vertical swipes scroll the page, horizontal/pinch drive the 3D view */
+  touch-action: pan-y;
+}
+
+::selection {
+  background: rgba(0, 184, 92, 0.4);
+  color: #ffffff;
+}
+
+/* circuit-trace scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00b85c, #007a3e);
+  border-radius: 5px;
+  border: 2px solid #0a0e1a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d46a;
+}
+
+/* faint PCB dot grid */
+.circuit-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 184, 92, 0.14) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+/* fine board trace grid */
+.trace-grid {
+  background-image:
+    linear-gradient(rgba(0, 184, 92, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 184, 92, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(0, 229, 255, 0.12) 1px, transparent 0);
+  background-size: 44px 44px, 44px 44px, 22px 22px;
+}
+
+/* glassmorphism panel */
+.glass {
+  background: rgba(16, 21, 42, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(35, 44, 74, 0.9);
+}
+
+.glass-light {
+  background: rgba(21, 27, 51, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(35, 44, 74, 0.7);
+}
+
+.glow-gold {
+  box-shadow: 0 0 26px rgba(245, 197, 24, 0.28);
+}
+.glow-cyber {
+  box-shadow: 0 0 26px rgba(0, 229, 255, 0.28);
+}
+.glow-pcb {
+  box-shadow: 0 0 26px rgba(0, 184, 92, 0.28);
+}
+
+/* PCB-style button */
+.pcb-button {
+  position: relative;
+  background: linear-gradient(180deg, #00b85c, #008545);
+  border: 1px solid rgba(245, 197, 24, 0.6);
+  box-shadow: 0 0 14px rgba(0, 184, 92, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+}
+.pcb-button:hover {
+  box-shadow: 0 0 28px rgba(245, 197, 24, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  filter: brightness(1.08);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 3.2s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.animate-float {
+  animation: float-slow 6.5s ease-in-out infinite;
+}
